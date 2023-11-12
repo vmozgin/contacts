@@ -11,3 +11,12 @@ services:
       - POSTGRES_DB=contacts
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  contacts:
+    build:
+      context: .
+    image: contacts
+    container_name: contacts
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
